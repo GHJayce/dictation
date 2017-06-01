@@ -27,13 +27,13 @@
 	</ul>
 	<div class="setting">
 		<label>随机：</label><select name="random" id="random">
-			<option value="1">No</option>
-			<option value="2">Yes</option>
+			<option value="0">No</option>
+			<option value="1">Yes</option>
 		</select>
 		<label>间隔：</label><select name="interval" id="interval">
-			<option value="1">1s</option>
-			<option value="2">2s</option>
-			<option value="3">3s</option>
+			<option value="1000">1s</option>
+			<option value="2000">2s</option>
+			<option value="3000">3s</option>
 		</select>
 		<label>重复次数：</label><select name="repeatNum" id="repeatNum">
 			<option value="1">1</option>
@@ -50,7 +50,8 @@
 			<option value="1">男声</option>
 		</select>
 	</div>
-	<button class="btn play">开始听写</button>
+	<button class="btn play" id="play">开始听写</button>
+	<audio id="tts" src=""></audio>
 </div>
 
 </body>

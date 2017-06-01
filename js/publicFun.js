@@ -41,3 +41,12 @@ function ajax(obj){
 		}
 	}
 }
+
+function $(element){
+	return document.querySelector(element);
+}
+
+function getSelected(element){
+	var index = element.selectedIndex;
+	return element.options[index];
+}
