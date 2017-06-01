@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>dictation</title>
+	<script src="js/publicFun.js"></script>
 </head>
 <body>
 
@@ -15,6 +16,41 @@
 	<li>激浪</li>
 	<li>跨栏</li>
 </ul>
+
+<div class="menu">
+	<ul class="list-1" id="list">
+		<li>牧童</li>
+		<li>蓑衣</li>
+		<li>激浪</li>
+		<li>跨栏</li>
+	</ul>
+	<div class="setting">
+		<label>随机：</label><select name="random" id="random">
+			<option value="1">No</option>
+			<option value="2">Yes</option>
+		</select>
+		<label>间隔：</label><select name="interval" id="interval">
+			<option value="1">1s</option>
+			<option value="2">2s</option>
+			<option value="3">3s</option>
+		</select>
+		<label>重复次数：</label><select name="repeatNum" id="repeatNum">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+		</select>
+		<label>语速：</label><select name="speed" id="speed">
+			<option value="3">慢速</option>
+			<option value="5" selected>正常</option>
+			<option value="7">快速</option>
+		</select>
+		<label>发音：</label><select name="people" id="people">
+			<option value="0">女声</option>
+			<option value="1">男声</option>
+		</select>
+	</div>
+	<button class="btn play">开始听写</button>
+</div>
 
 <script>
 
