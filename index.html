@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<title>dictation</title>
 	<script src="js/publicFun.js"></script>
+	<script>window.jstiming={load:{tick:function(str){return str}}}</script>
+	<script src="http://translate.google.cn/translate/releases/twsfe_20161212_RC00/r/js/desktop_module_main.js"></script>
 	<script src="js/main.js"></script>
 </head>
 <body>
@@ -24,6 +26,7 @@
 		<li>蓑衣</li>
 		<li>激浪</li>
 		<li>跨栏</li>
+		<li>哦嘿菇狗翻溢，雷啊雷啊，抬举丽抖啦！</li>
 	</ul>
 	<div class="setting">
 		<label>随机：</label><select name="random" id="random">
@@ -32,11 +35,11 @@
 		</select>
 		<label>间隔：</label><select name="interval" id="interval">
 			<option value="1000">1s</option>
-			<option value="2000">2s</option>
+			<option value="2000" selected>2s</option>
 			<option value="3000">3s</option>
 		</select>
 		<label>重复次数：</label><select name="repeatNum" id="repeatNum">
-			<option value="1">1</option>
+			<option value="1" selected>1</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
 		</select>
@@ -51,7 +54,7 @@
 		</select>
 	</div>
 	<button class="btn play" id="play">开始听写</button>
-	<audio id="tts" src=""></audio>
+	<audio id="tts" src="https://translate.google.cn/translate_tts?ie=UTF-8&tl=zh-CN&total=1&idx=0&client=t&prev=input&tk=&tk=566098.981872&q=%E5%93%A6%E5%98%BF%E8%8F%87%E7%8B%97%E7%BF%BB%E6%BA%A2%EF%BC%8C%E9%9B%B7%E5%95%8A%E9%9B%B7%E5%95%8A%EF%BC%8C%E6%8A%AC%E4%B8%BE%E4%B8%BD%E6%8A%96%E5%95%A6%EF%BC%81&ttsspeed=0.5&=textlen=18"></audio>
 </div>
 
 </body>
