@@ -47,27 +47,26 @@ function autoDictation(obj){
 	// 开始听写
 	this.begin = function(){
 		var nextFlag = 1, // 播放下一个词语语音的开关
-			word = th.getWord(); // 词语
+			currentWord = th.getWord(); // 当前词语
 		time1 = new Date().getTime(); // 测试每次间隔用
+		ajax({
+			method : "GET",
+			url : th.config.tkk,
+			success : function(tkk){ ik = tkk; } // Google translate js param 设置tkk
+		});
 		setTimeout(function(){
-			ajax({
-				method : "GET",
-				url : th.config.tkk,
-				success : function(tkk){
-					ik = tkk; // Google translate js param tkk 设置
-					deacon.src = th.config.api+ jk(word) +"&q="+ encodeURIComponent(word) +"&textlen="+ word.length +"&=ttsspeed="+ th.config.speed;
-					deacon.play();
-					deacon.addEventListener('playing',function(e){
-						time2 = new Date().getTime(); // 测试每次间隔用
-						var duration = event.srcElement.duration;
-					});
-					deacon.addEventListener('ended',function(e){
-						if(nextFlag&&wordList!=''){
-							nextFlag = 0;
-							console.log(word,e,time2-time1); // 测试每次间隔用，有一个问题，每个词的播报间隔都要加上ajax请求的时间，间隔并不理想
-							th.begin();
-						}
-					});
+			time2 = new Date().getTime(); // 测试每次间隔用
+			
+			deacon.src = th.config.api+ jk(currentWord) +"&q="+ encodeURIComponent(currentWord) +"&textlen="+ currentWord.length +"&=ttsspeed="+ th.config.speed;
+			deacon.play();
+			deacon.addEventListener('playing',function(e){
+				var duration = event.srcElement.duration;
+			});
+			deacon.addEventListener('ended',function(e){
+				if(nextFlag&&wordList!=''){
+					nextFlag = 0;
+					console.log(currentWord,e,time2-time1); // 将请求tkk的ajax移到了播放语音前加载，现在间隔要加上请求语音的时间，因为请求的时间比较短，间隔问题也不大
+					th.begin();
 				}
 			});
 		},th.config.interval)
