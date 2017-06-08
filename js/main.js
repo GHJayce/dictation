@@ -28,44 +28,49 @@ window.onload=function(){
 
 function autoDictation(obj){
 
-	var th = this,
-		wordList = obj.data, // 词语列表
-		deacon = obj.audioElement, // 音频元素
-		currentWord, // 当前读到的词语
-		alreadyList = []; // 已经听过的词语
-
 	// 设置
 	this.config = {
 		tkk : 'http://tt.890m.com/translate_tkk.php', // google tkk
 		api : 'https://translate.google.cn/translate_tts?ie=UTF-8&tl=zh-CN&total=1&idx=0&client=t&prev=input', // 使用哪个发音接口
 		random : 1, // 随机
 		interval : 3000, // 间隔
-		repeat : 2, // 重复次数
+		repeat : 3, // 重复次数
 		speed : 0.4, // 速度
 	};
+
+	var th = this,
+		wordList = obj.data, // 词语列表
+		deacon = obj.audioElement, // 音频元素
+		currentWord, // 当前读到的词语
+		currentRepeat = this.config.repeat, // 当前重复次数
+		alreadyList = []; // 已经听过的词语
+
+	
 
 	// 开始听写
 	this.begin = function(){
 		var nextFlag = 1, // 播放下一个词语语音的开关
 			currentWord = th.getWord(); // 当前词语
-		time1 = new Date().getTime(); // 测试每次间隔用
 		ajax({
 			method : "GET",
 			url : th.config.tkk,
 			success : function(tkk){ ik = tkk; } // Google translate js param 设置tkk
 		});
 		setTimeout(function(){
-			time2 = new Date().getTime(); // 测试每次间隔用
-			
 			deacon.src = th.config.api+ jk(currentWord) +"&q="+ encodeURIComponent(currentWord) +"&textlen="+ currentWord.length +"&=ttsspeed="+ th.config.speed;
 			deacon.play();
-			deacon.addEventListener('playing',function(e){
-				var duration = event.srcElement.duration;
-			});
-			deacon.addEventListener('ended',function(e){
-				if(nextFlag&&wordList!=''){
+			deacon.addEventListener('ended',function(e){ // 播放结束后
+				if(nextFlag&&currentRepeat>1){ // 复读当前词语
+					console.log(currentWord,currentRepeat)
+					nextFlag = 0; // 避免重复触发播放结束事件
+					setTimeout(function(){
+						currentRepeat-=1;
+						deacon.play();
+						nextFlag = 1;
+					},th.config.interval)
+				}else if(nextFlag&&wordList!=''){ // 下一个词语
+					currentRepeat = th.config.repeat; // 重置当前的重复次数
 					nextFlag = 0;
-					console.log(currentWord,e,time2-time1); // 将请求tkk的ajax移到了播放语音前加载，现在间隔要加上请求语音的时间，因为请求的时间比较短，间隔问题也不大
 					th.begin();
 				}
 			});
