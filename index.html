@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>dictation</title>
+	<link rel="stylesheet" href="css/style.css">
 	<script src="js/publicFun.js"></script>
 	<script>window.jstiming={load:{tick:function(str){return str}}}</script>
 	<script src="http://translate.google.cn/translate/releases/twsfe_20161212_RC00/r/js/desktop_module_main.js"></script>
@@ -10,16 +11,72 @@
 </head>
 <body>
 
-<input type="text" class="enter" placeholder="输入词语">
-<button class="btn add">添加</button>
+<header class="main-header">
+	<div class="user-menu pull-right">
+		<button class="menu-btn" id="uMenuBtn">＋</button>
+		<ul class="menu-list" id="menuList">
+			<li>听写记录</li>
+			<li>反馈</li>
+			<li>设置</li>
+		</ul>
+	</div>
+</header>
 
-<ul class="list-1">
-	<li>牧童</li>
-	<li>蓑衣</li>
-	<li>激浪</li>
-	<li>跨栏</li>
-</ul>
+<div class="enter">
+	<input type="text" class="input" placeholder="输入词语">
+	<button class="btn add" id="add">添加</button>
+</div>
 
+<div class="setting">
+	<div class="row-group">
+		
+	</div>
+</div>
+
+<div class="list">
+	<div class="list-block">
+		<div class="list-title">
+			<h4>点击更改词表名称</h4><time>17/6/8 15:58</time>
+		</div>
+		<div class="list-content">
+			<div class="list-word">
+				<label>牧童</label>
+				<label>蓑衣</label>
+				<label>激浪</label>
+				<label>跨栏</label>
+				<label>牧童</label>
+				<label>蓑衣</label>
+				<label>激浪</label>
+				<label>跨栏</label>
+				<label>牧童</label>
+				<label>蓑衣</label>
+				<label>激浪</label>
+				<label>跨栏</label>
+				<label>牧童</label>
+				<label>蓑衣</label>
+				<label>激浪</label>
+				<label>跨栏</label>
+				<label>牧童</label>
+				<label>蓑衣</label>
+				<label>激浪</label>
+				<label>跨栏</label>
+				<label>牧童</label>
+				<label>蓑衣</label>
+				<label>激浪</label>
+				<label>跨栏</label>
+			</div>
+			<button class="btn play" id="play">开始听写</button>
+		</div>
+	</div>
+	<div class="list-block">
+		<h4>点击更改词表名称</h4><time>17/6/8 13:58</time>
+	</div>
+	<div class="list-block">
+		<h4>点击更改词表名称</h4><time>17/6/8 20:58</time>
+	</div>
+</div>
+
+<audio id="tts" src=""></audio>
 <div class="menu">
 	<ul class="list-1" id="list">
 		<li>牧童</li>
@@ -54,8 +111,6 @@
 			<option value="1">男声</option>
 		</select>
 	</div>
-	<button class="btn play" id="play">开始听写</button>
-	<audio id="tts" src=""></audio>
 </div>
 
 </body>

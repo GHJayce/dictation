@@ -1,4 +1,17 @@
 window.onload=function(){
+	var menuList = $("#menuList");
+	var uMenuBtn = $("#uMenuBtn");
+	uMenuBtn.onclick = function(e){
+		uMenuBtn.classList.add("menu-btn-active");
+		menuList.style.cssText = "visibility:visible;opacity:1";
+		e.stopPropagation();
+	}
+	document.onclick = function(e){
+		e.stopPropagation();
+		uMenuBtn.classList.remove("menu-btn-active");
+		menuList.style.cssText = "visibility:hidden;opacity:0";
+	}
+
 	var platform = "google";
 	var url = "https://translate.google.cn/translate_tts?ie=UTF-8&tl=zh-CN&total=1&idx=0&client=t&prev=input";
 	var config = {
@@ -34,7 +47,7 @@ function autoDictation(obj){
 		api : 'https://translate.google.cn/translate_tts?ie=UTF-8&tl=zh-CN&total=1&idx=0&client=t&prev=input', // 使用哪个发音接口
 		random : 1, // 随机
 		interval : 3000, // 间隔
-		repeat : 3, // 重复次数
+		repeat : 2, // 重复次数
 		speed : 0.4, // 速度
 	};
 
@@ -61,7 +74,6 @@ function autoDictation(obj){
 			deacon.play();
 			deacon.addEventListener('ended',function(e){ // 播放结束后
 				if(nextFlag&&currentRepeat>1){ // 复读当前词语
-					console.log(currentWord,currentRepeat)
 					nextFlag = 0; // 避免重复触发播放结束事件
 					setTimeout(function(){
 						currentRepeat-=1;
