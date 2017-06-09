@@ -42,6 +42,13 @@ h1,h2,h3,h4,h5,h6{
 	padding:20px;
 	border-radius:2px;
 }
+.btn-disabled{
+	background-color:#c5c5c5;
+}
+.hidden{
+	visibility:hidden;
+	opacity:0
+}
 
 
 /* main-header */
@@ -103,6 +110,12 @@ h1,h2,h3,h4,h5,h6{
 /* setting style area */
 .setting{
 	margin:0 20px;
+}
+.setting-disabled{
+	background-color: #fbf8f8;
+}
+.setting-disabled .row-group label{
+	cursor:no-drop;
 }
 .setting h3{
 	margin-bottom:20px;
