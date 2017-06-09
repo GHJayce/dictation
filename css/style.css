@@ -32,9 +32,6 @@ body{
 	color:#fff;
 	border:none;
 }
-input[class*='switch']{
-	display:none;
-}
 h1,h2,h3,h4,h5,h6{
 	font-family: "microsoft yahei light";
 }
@@ -117,7 +114,7 @@ h1,h2,h3,h4,h5,h6{
 }
 .row-group .title{
 	display:inline-block;
-	margin-right:15px;
+	margin: auto 15px auto 0;
 	flex: 0 0 60px;
 	text-align: right;
 }
@@ -125,8 +122,16 @@ h1,h2,h3,h4,h5,h6{
 	margin-right:30px;
 	color:#03a9f4;
 	cursor:pointer;
+	padding: 7px 20px;
+	border: 1px solid #dfdfdf;
+	border-radius: 6px;
 }
-.row-group .checkbox{
+.options.options-checked{
+	background-color:#03a9f4;
+	color:#fff;
+	border:1px solid transparent;
+}
+.switch{
 	width: 45px;
 	height: 20px;
 	background: lightgray;
@@ -135,7 +140,7 @@ h1,h2,h3,h4,h5,h6{
 	position: relative;
 	cursor: pointer;
 }
-.row-group .checkbox:before, .row-group .checkbox:after {
+.switch:before, .switch:after {
 	content: "";
 	display: inline-block;
 	width: 21px;
@@ -147,21 +152,21 @@ h1,h2,h3,h4,h5,h6{
 	left: 0;
 	transition: all .2s ease-out;
 }
-.row-group .checkbox:after {
+.switch:after {
   	box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
 }
-.row-group .checkbox:before {
+.switch:before {
   	background: lightgray;
   	transform: scale3d(0, 0, 1);
 }
-.row-group .checkbox:active:before {
+.switch:active:before {
   	transform: scale3d(3, 3, 1);
   	opacity: 0;
 }
-input[type=checkbox].switch.green:checked + .checkbox {
+.switch-checked{
 	background-color: #4fd366;
 }
-input[type=checkbox].switch:checked + .checkbox:before, input[type=checkbox].switch:checked + .checkbox:after {
+.switch-checked:before, .switch-checked:after {
   	left: 25px;
 }
 
@@ -190,32 +195,20 @@ input[type=checkbox].switch:checked + .checkbox:before, input[type=checkbox].swi
 	counter-reset: sectioncounter;
 }
 .list-word label {
-    padding: 7px 20px;
-    display: inline-block;
-    border: 1px solid #dfdfdf;
-    border-radius: 6px;
     font-size: 14px;
-    margin: 0 15px 15px 0;
+    margin: 0 45px 40px 0;
     position: relative;
-}
-.list-word label:nth-child(-n+9):before{
-	content: "0"counter(sectioncounter);
+    color: #333;
+    display: inline-block;
 }
 .list-word label:before{
-	content: counter(sectioncounter);
+    content: counter(sectioncounter)".";
     counter-increment: sectioncounter;
-    border-radius: 50%;
-    color: #fff;
-    background-color: #a1d2e8;
-    background-color: #a9c4dc;
-    padding: 2px;
-    position: absolute;
-    left: -10px;
-    top: -10px;
+    margin-right: 5px;
     font-size: 12px;
 }
 .list-content .play{
 	padding:10px;
-	flex: 1 0 90px;
+	flex: 0 0 90px;
 	border-radius: 2px;
 }
