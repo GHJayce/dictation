@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<title>dictation</title>
 	<link rel="stylesheet" href="css/style.css">
 	<script src="js/publicFun.js"></script>
@@ -27,14 +28,42 @@
 	<button class="btn add" id="add">添加</button>
 </div>
 
-<div class="setting">
+<div class="setting box-block">
+	<h3>设置</h3>
 	<div class="row-group">
-		
+		<span class="title">随机</span>
+		<input type="checkbox" id="random" class="switch green">
+		<label class="checkbox options" for="random" data-set="random" data-value="0"></label>
+	</div>
+	<div class="row-group">
+		<span class="title">间隔</span>
+		<label class="options">1秒</label>
+		<label class="options">2秒</label>
+		<label class="options">3秒</label>
+		<label class="options">4秒</label>
+		<label class="options">5秒</label>
+	</div>
+	<div class="row-group">
+		<span class="title">重复次数</span>
+		<label class="options">1次</label>
+		<label class="options">2次</label>
+		<label class="options">3次</label>
+	</div>
+	<div class="row-group">
+		<span class="title">语速</span>
+		<label class="options">慢速</label>
+		<label class="options">正常</label>
+		<label class="options">快速</label>
+	</div>
+	<div class="row-group">
+		<span class="title">发音</span>
+		<label class="options">女声</label>
+		<label class="options">男声</label>
 	</div>
 </div>
 
 <div class="list">
-	<div class="list-block">
+	<div class="list-block box-block">
 		<div class="list-title">
 			<h4>点击更改词表名称</h4><time>17/6/8 15:58</time>
 		</div>
@@ -68,50 +97,8 @@
 			<button class="btn play" id="play">开始听写</button>
 		</div>
 	</div>
-	<div class="list-block">
-		<h4>点击更改词表名称</h4><time>17/6/8 13:58</time>
-	</div>
-	<div class="list-block">
-		<h4>点击更改词表名称</h4><time>17/6/8 20:58</time>
-	</div>
 </div>
 
 <audio id="tts" src=""></audio>
-<div class="menu">
-	<ul class="list-1" id="list">
-		<li>牧童</li>
-		<li>蓑衣</li>
-		<li>激浪</li>
-		<li>跨栏</li>
-		<li>哦嘿菇狗翻溢，雷啊雷啊，抬举丽抖啦！</li>
-		<li>good morning! 杰</li>
-	</ul>
-	<div class="setting">
-		<label>随机：</label><select name="random" id="random">
-			<option value="0">No</option>
-			<option value="1">Yes</option>
-		</select>
-		<label>间隔：</label><select name="interval" id="interval">
-			<option value="1000">1s</option>
-			<option value="2000" selected>2s</option>
-			<option value="3000">3s</option>
-		</select>
-		<label>重复次数：</label><select name="repeatNum" id="repeatNum">
-			<option value="1" selected>1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-		</select>
-		<label>语速：</label><select name="speed" id="speed">
-			<option value="3">慢速</option>
-			<option value="5" selected>正常</option>
-			<option value="7">快速</option>
-		</select>
-		<label>发音：</label><select name="people" id="people">
-			<option value="0">女声</option>
-			<option value="1">男声</option>
-		</select>
-	</div>
-</div>
-
 </body>
 </html>

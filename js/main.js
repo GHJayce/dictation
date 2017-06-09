@@ -14,12 +14,12 @@ window.onload=function(){
 
 	var platform = "google";
 	var url = "https://translate.google.cn/translate_tts?ie=UTF-8&tl=zh-CN&total=1&idx=0&client=t&prev=input";
-	var config = {
-		random : getSelected($("#random")).value,
-		interval : parseInt(getSelected($("#interval")).value),
-		repeatNum : parseInt(getSelected($("#repeatNum")).value),
-		speed : (platform=='google'?'0.':'')+getSelected($("#speed")).value,
-	}
+	// var config = {
+	// 	random : getSelected($("#random")).value,
+	// 	interval : parseInt(getSelected($("#interval")).value),
+	// 	repeatNum : parseInt(getSelected($("#repeatNum")).value),
+	// 	speed : (platform=='google'?'0.':'')+getSelected($("#speed")).value,
+	// }
 
 	var beginBtn = $("#play");
 
@@ -46,7 +46,7 @@ function autoDictation(obj){
 		tkk : 'http://tt.890m.com/translate_tkk.php', // google tkk
 		api : 'https://translate.google.cn/translate_tts?ie=UTF-8&tl=zh-CN&total=1&idx=0&client=t&prev=input', // 使用哪个发音接口
 		random : 1, // 随机
-		interval : 3000, // 间隔
+		interval : 1000, // 间隔
 		repeat : 2, // 重复次数
 		speed : 0.4, // 速度
 	};
