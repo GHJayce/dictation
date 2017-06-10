@@ -57,10 +57,16 @@ h1,h2,h3,h4,h5,h6{
 	height:60px;
 	background-color:#03a9f4;
 	box-shadow:0 2px 3px rgba(0,0,0,.2);
+	text-align: center;
+}
+.main-header h2{
+	display: inline-block;
+	line-height: 60px;
 }
 .user-menu{
 	position:relative;
 	margin-right: 15px;
+	text-align:left;
 }
 .menu-btn{
 	background-color:transparent;
