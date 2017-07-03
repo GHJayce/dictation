@@ -142,7 +142,7 @@ function autoDictation(obj){
 
 	// 设置
 	this.config = {
-		tkk : 'http://tt.890m.com/translate_tkk.php', // google tkk
+		tkk : 'translate_tkk.php', // google tkk
 		api : 'https://translate.google.cn/translate_tts?ie=UTF-8&tl=zh-CN&total=1&idx=0&client=t&prev=input', // 使用哪个发音接口
 		random : 0, // 随机
 		interval : 1000, // 间隔
@@ -170,7 +170,8 @@ function autoDictation(obj){
 			success : function(tkk){ ik = tkk; } // Google translate js param 设置tkk
 		});
 		setTimeout(function(){
-			deacon.src = th.config.api+ jk(currentWord) +"&q="+ encodeURIComponent(currentWord) +"&textlen="+ currentWord.length +"&=ttsspeed="+ th.config.speed;
+			// deacon.src = th.config.api+ jk(currentWord) +"&q="+ encodeURIComponent(currentWord) +"&textlen="+ currentWord.length +"&=ttsspeed="+ th.config.speed;
+			deacon.src = "translate_tts.php?q="+ currentWord + jk(currentWord) +"&ttsspeed="+ th.config.speed; // 换成了PHP接口
 			deacon.play();
 			// 播放结束后
 			deacon.addEventListener('ended',run);
