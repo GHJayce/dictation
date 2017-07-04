@@ -13,7 +13,11 @@ button{
 	cursor:pointer;
 }
 body{
-	background-color:#f2f2f2;
+	background-color:#fafafa;
+}
+@font-face{
+	font-family:"迷你简稚艺";
+	src:url("../font/迷你简稚艺.ttf");
 }
 .pull-left{
 	float:left;
@@ -28,12 +32,15 @@ body{
 	padding-left:5px;
 }
 .btn{
-	background-color:#03a9f4;
+	background-color:#25b6ed;
 	color:#fff;
 	border:none;
 }
 h1,h2,h3,h4,h5,h6{
 	font-family: "microsoft yahei light";
+}
+a{
+	text-decoration:none;
 }
 .box-block{
 	background-color:#fff;
@@ -47,26 +54,64 @@ h1,h2,h3,h4,h5,h6{
 }
 .hidden{
 	visibility:hidden;
-	opacity:0
+	opacity:0;
+}
+.bgdc-green{
+	background-color: rgba(132, 172, 69, .8) !important;
+}
+.bgdc-green:hover{
+	background-color: rgba(132,172,69,1) !important;
+}
+.bgdc-red{
+	background-color: rgba(237, 98, 71, .8) !important;
+}
+.bgdc-red:hover{
+	background-color: rgba(237, 98, 71, 1) !important;
+}
+.bgdc-orange{
+	background-color: rgba(251, 177, 80, .8) !important;
+}
+.bgdc-orange:hover{
+	background-color: rgba(251, 177, 80, 1) !important;
+}
+.bgdc-dark-blue{
+	background-color: rgba(96, 125, 139, .8) !important;
+}
+.bgdc-dark-blue:hover{
+	background-color: rgba(96, 125, 139, 1) !important;
+}
+.back {
+    position: absolute;
+    left: 15px;
+    font-size: 35px;
+    font-family: "lucida family";
+    font-weight: bold;
+    margin: auto;
+    top: 50%;
+    margin-top: -20px;
+    color:#fff;
 }
 
 
 /* main-header */
 .main-header{
 	color:#fff;
-	height:60px;
-	background-color:#03a9f4;
+	height:50px;
+	background-color:#25b6ed;
 	box-shadow:0 2px 3px rgba(0,0,0,.2);
 	text-align: center;
+	position: relative;
 }
-.main-header h2{
+.main-header .title{
 	display: inline-block;
-	line-height: 60px;
+	line-height: 50px;
 }
 .user-menu{
-	position:relative;
+	position:absolute;
 	margin-right: 15px;
 	text-align:left;
+	top: 0;
+	right: 0;
 }
 .menu-btn{
 	background-color:transparent;
@@ -74,7 +119,7 @@ h1,h2,h3,h4,h5,h6{
 	outline:none;
 	color:#fff;
 	font-size:30px;
-	line-height:60px;
+	line-height:50px;
 	padding:0 15px;
 }
 .menu-btn:hover,.menu-btn-active{
@@ -100,6 +145,41 @@ h1,h2,h3,h4,h5,h6{
 	border-bottom-right-radius: 2px;
 	border-bottom-left-radius: 2px;
 }
+
+/* fun-menu */
+.fun-menu .box{
+	text-align: center;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    background-color: rgba(255, 105, 123, .8);
+    color: #fff;
+    width: 100%;    
+	font-family:"迷你简稚艺";
+}
+.box.box-big{
+	padding: 25px;
+    font-size: 30px;
+}
+.box.box-medium{
+	padding: 20px;
+    font-size: 25px;
+}
+.box.box-small{
+	padding: 15px;
+    font-size: 20px;
+}
+.fun-menu ul{
+	display: flex;
+	flex-wrap:wrap;
+	padding: 15px;
+}
+.fun-menu li {
+    display: flex;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
 
 /* enter style area */
 .enter{
@@ -139,14 +219,14 @@ h1,h2,h3,h4,h5,h6{
 }
 .row-group .options{
 	margin-right:30px;
-	color:#03a9f4;
+	color:#25b6ed;
 	cursor:pointer;
 	padding: 7px 20px;
 	border: 1px solid #dfdfdf;
 	border-radius: 6px;
 }
 .options.options-checked{
-	background-color:#03a9f4;
+	background-color:#25b6ed;
 	color:#fff;
 	border:1px solid transparent;
 }
