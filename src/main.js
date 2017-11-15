@@ -5,8 +5,7 @@ const app = new Vue({
 		app: {
 			showBack: false,
 			title: '听写小应用'
-		},
-		index: ''
+		}
 	},
 	methods: {
 		routes: function () {
@@ -62,7 +61,18 @@ const app = new Vue({
 					text: '设置'
 				}
 			]
-		}
+		};
+		// this.words = {
+		// 	dataList: [
+		// 		{
+		// 			open: 'in',
+		// 			class: true,
+		// 			title: '默认词语本',
+		// 			words: ['你好']
+		// 		}
+		// 	],
+		// 	editor: false
+		// };
 	},
 	watch: {
 		"$route": function () {
