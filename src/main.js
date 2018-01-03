@@ -17,7 +17,7 @@ const app = new Vue({
 					break;
 				case '/dictation':
 					this.app.showBack = true;
-					this.app.title = '听写准备中';
+					this.app.title = '听写';
 					break;
 				case '/words':
 					this.app.showBack = true;
