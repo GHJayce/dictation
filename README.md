@@ -6,7 +6,7 @@
 
 > 全新的版本，无需任何动态语言，**完全纯静态，打开就能用。**
 
-使用vue-cli开发，打包之后的应用能够单机运行，或者[在线使用](https://ghbjayce.github.io/dictation)
+下载就能够单机运行，或者[在线使用](https://ghbjayce.github.io/dictation)
 
 ## 功能列表
 
