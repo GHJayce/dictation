@@ -11,21 +11,33 @@
 
                 <div class="collapse navbar-collapse" id="nav">
                     <ul class="nav navbar-nav">
-                        <li v-for="(v, k) in nav.left" :class="{
+                        <li v-for="(v, k) in nav.list" :class="{
                                 active: k === nav.active.index
-                            }">
-                            <a @click="clickNavLink(k, 'left')">{{ v.text }}</a>
+                            }" v-if="v.position === undefined || v.position === 'left'">
+                            <a @click="clickNavLink(k)">{{ v.text }}</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">设置 <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">听写设置</a></li>
-                                <li><a href="#">个性化</a></li>
-                                <li><a href="#">数据导入导出</a></li>
-                            </ul>
-                        </li>
+                        <template v-for="(v, k) in nav.list" v-if="v.position === 'right'">
+                            <li v-if="v.child === undefined" :class="{
+                                active: k === nav.active.index
+                            }">
+                                <a @click="clickNavLink(k)">{{ v.text }}</a>
+                            </li>
+                            <li v-else :class="{
+                                dropdown: true,
+                                active: k === nav.active.index
+                            }">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ v.text }} <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li v-for="(vv, kk) in v.child" :class="{
+                                        active: kk === nav.active.childIndex
+                                    }">
+                                        <a @click="clickNavLink(k, kk)">{{ vv.text }}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </template>
                     </ul>
                 </div>
             </div>
@@ -39,6 +51,7 @@ export default {
     name: "App",
     data() {
         return {
+            router: null,
             nav: {
                 brand: {
                     logo: '',
@@ -46,48 +59,67 @@ export default {
                     link: '/',
                 },
                 active: {
-                    which: null, // 哪一边 left, right
                     index: null, // 下标
+                    childIndex: null,
                 },
-                left: [
+                list: [
                     { text: '首页', link: '/index', },
-                    { text: '听写', link: '', },
-                    { text: '词语本', link: '', },
-                    { text: '听写记录', link: '', },
-                ],
-                right: [
-                    { text: '赞赏作者', link: '', },
+                    { text: '听写', link: '/dictation', },
+                    { text: '词语本', link: '/word_book', },
+                    { text: '听写记录', link: '/record', },
+                    { text: '赞赏作者', link: '/reward', position: 'right' },
                     {
                         text: '设置',
+                        link: '/setting',
+                        position: 'right',
                         child: [
-                            { text: '听写设置', link: '', },
-                            { text: '个性化', link: '', },
-                            { text: '数据导入导出', link: '', },
+                            { text: '听写设置', link: '/dictation', },
+                            { text: '个性化', link: '/theme', },
+                            { text: '数据导入导出', link: '/import_export', },
                         ],
                     },
                 ],
-            }
+            },
         }
     },
     mounted() {
-        this.saveNavActive()
+        this.init()
     },
     methods: {
-        clickNavLink(index, which) {
+        clickNavLink(index, childIndex) {
             this.nav.active.index = index
-            this.nav.active.which = which
+            this.nav.active.childIndex = childIndex
+            
+            let navList = this.nav.list[index]
+            let link = navList.link
+            let path = childIndex === undefined ? link : link + navList.child[childIndex].link
 
             this.$router.push({
-                path: this.nav[which][index].link
+                path: path
             })
         },
-        saveNavActive() {
-            var _this = this;
+        // saveNavActive() {
+        //     var _this = this;
             
-            $(window).on('beforeunload', function () {
-                localStorage.dictation = JSON.stringify(_this.nav.active);
-            })
-        }
+        //     $(window).on('beforeunload', function () {
+        //         let localData = _this.localData()
+        //         localData['nav'] = {
+        //             active: _this.nav.active
+        //         }
+        //         _this.setLocalData(localData)
+        //     })
+        // },
+        init() {
+            // this.saveNavActive()
+            // this.nav.active = this.localData()['nav']['active']
+            this.router = this.$route.path
+            this.nav.active = this.navActive(this.nav.list, this.router)
+        },
+    },
+    watch: {
+        "$route": function (nval, oval) {
+            this.navActive(this.nav.list, nval.path)
+        },
     },
 };
 </script>
