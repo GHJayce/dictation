@@ -98,20 +98,7 @@ export default {
                 path: path
             })
         },
-        // saveNavActive() {
-        //     var _this = this;
-            
-        //     $(window).on('beforeunload', function () {
-        //         let localData = _this.localData()
-        //         localData['nav'] = {
-        //             active: _this.nav.active
-        //         }
-        //         _this.setLocalData(localData)
-        //     })
-        // },
         init() {
-            // this.saveNavActive()
-            // this.nav.active = this.localData()['nav']['active']
             this.router = this.$route.path
             this.nav.active = this.navActive(this.nav.list, this.router)
         },
